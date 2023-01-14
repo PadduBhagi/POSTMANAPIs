@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "74cec0b8-9b5b-4c03-8753-5efc1cba1e31",
+		"name": "Samplecollections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25263233"
+	},
+	"item": [
+		{
+			"name": "{{Url_global}}/api/users?page=3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Staus code is 200\",()=>{\r",
+							"pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Url}}/api/users?page=2",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{Url_global}}/api/users?page=3 315 id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Url_global}}/api/unknown/841",
+					"host": [
+						"{{Url_global}}"
+					],
+					"path": [
+						"api",
+						"unknown",
+						"841"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Staus code is either 200 or 201\",()=>{\r",
+							"pm.expect(pm.response.code).to.be.oneOf([200,201])\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User is created\",()=>{\r",
+							"pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Bhargavapoola\",\r\n    \"job\": \"Freelancer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url_global}}/api/users",
+					"host": [
+						"{{Url_global}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_local}}/api/users/315",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"url_local\",\"https://reqres.in\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"PadduBhagi\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_local}}/api/users/315",
+					"host": [
+						"{{url_local}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"315"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
